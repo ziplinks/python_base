@@ -1,4 +1,5 @@
 from pymysql import Connection
+
 conn = Connection(
     host="localhost",
     port=3306,
@@ -20,8 +21,7 @@ conn.select_db("test")
 cursor.execute("select * from student")
 
 # 插入数据
-cursor.execute("insert into student values(11,'李丽',32),(35,'王五一',21)")
-
+# cursor.execute("insert into student values(11,'李丽',32),(35,'王五一',21)")
 
 # 获取查询结果(元组)
 result: tuple = cursor.fetchall()
@@ -35,5 +35,5 @@ for item in result:
 # 确认提交（插入数据使用）
 # conn.commit()
 
-# 关闭
+# 关闭 （关闭之前会自动执行commit 所以不用重复写）
 conn.close()

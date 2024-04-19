@@ -40,7 +40,16 @@ rdd3 = sc.textFile("E:/Python/pythonTest/data/data.txt")
 # ['1223 6456345 安徽省', '123 34773 河北省', '2088 2374782 江西省', '983 25334 淮北市', '52153 8345983894 上海市', '2341 89999 杭州']
 # 一行一行读取 转字符串放入list内
 print(rdd3.collect())
-
+arr = []
+for item in rdd3.collect():
+    it = item.strip().split()
+    obj = {
+        'id': it[0],
+        'num': it[1],
+        'address': it[2]
+    }
+    arr.append(obj)
+print(f"arr={arr},arr[0].address={arr[0]['address']}")
 
 sc.stop()
 
